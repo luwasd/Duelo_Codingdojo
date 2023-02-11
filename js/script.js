@@ -18,6 +18,9 @@ class Unit extends Card {
             throw new Error("Target must be a Unit");
         }
     }
+    showStats() {
+        console.log("Poder: " + this.power + " Resilencia: " + this.res);
+    }
 }
 
 class Effect extends Card {
@@ -29,9 +32,9 @@ class Effect extends Card {
     }
     play(target) {
         if (target instanceof Unit) {
-            if (this.stat = "res") {
+            if (this.stat == "res") {
                 target.res += this.mag;
-            } else if (this.stat = "power") {
+            } else if (this.stat == "power") {
                 target.power += this.mag;
             }
         } else {
@@ -47,3 +50,11 @@ let eff1 = new Effect('Algoritmo Dificil', 2, 'Aumentar la resistencia del Objet
 let eff2 = new Effect('Rechazo de promesa no manejado', 1, 'Reducir la resistencia del Objetivo en 2', 'res', -2);
 let eff3 = new Effect('Programación en pareja', 3, 'Aumentar el poder del Objetivo en 2', 'power', 2);
 
+unit1.showStats();
+unit2.showStats();
+eff1.play(unit1);
+eff2.play(unit2);
+eff3.play(unit2);
+
+unit1.showStats();
+unit2.showStats();
